@@ -11,53 +11,53 @@ import java.util.*;
  *
  * @author anahernandez
  */
-public class BinaryTree<E>
+public class BinarySearchTree<E>
 {
 
     protected Association<String, String> val; // value associated with node
-    protected BinaryTree<E> parent; // parent of node
-    protected BinaryTree<E> left, right; // children of node
+    protected BinarySearchTree<E> parent; // parent of node
+    protected BinarySearchTree<E> left, right; // children of node
 
-    public BinaryTree()
+    public BinarySearchTree()
     // post: constructor that generates an empty node
     {
             val = null;
             parent = null; left = right = this;
     }
 
-    public BinaryTree(Association<String, String> value)
+    public BinarySearchTree(Association<String, String> value)
     // post: returns a tree referencing value and two empty subtrees
     {
             val = value;
-            right = left = new BinaryTree<E>();
+            right = left = new BinarySearchTree<E>();
             setLeft(left);
             setRight(right);
     }
 
-    public BinaryTree(Association<String, String> value, BinaryTree<E> left, BinaryTree<E> right)
+    public BinarySearchTree(Association<String, String> value, BinarySearchTree<E> left, BinarySearchTree<E> right)
     // post: returns a tree referencing value and two subtrees
     {
             val = value;
-            if (left == null) { left = new BinaryTree<E>(); }
+            if (left == null) { left = new BinarySearchTree<E>(); }
             setLeft(left);
-            if (right == null) { right = new BinaryTree<E>(); }
+            if (right == null) { right = new BinarySearchTree<E>(); }
             setRight(right);
     }
 
-    public BinaryTree<E> left()
+    public BinarySearchTree<E> left()
     // post: returns reference to (possibly empty) left subtree
     // post: returns reference to (possibly empty) left subtree
     {
             return left;
     }
 
-    public BinaryTree<E> parent()
+    public BinarySearchTree<E> parent()
     {
         return parent;
     }
     // post: returns reference to parent node, or null
 
-    public void setLeft(BinaryTree<E> newLeft)
+    public void setLeft(BinarySearchTree<E> newLeft)
     // post: sets left subtree to newLeft
     // re-parents newLeft if not null
     {
@@ -67,7 +67,7 @@ public class BinaryTree<E>
             left.setParent(this);
     }
 
-    protected void setParent(BinaryTree<E> newParent)
+    protected void setParent(BinarySearchTree<E> newParent)
     // post: re-parents this node to parent reference, or null
     {
             if (!isEmpty()) {
@@ -93,7 +93,7 @@ public class BinaryTree<E>
             val = value;
     }
 
-    private void setRight(BinaryTree<E> right) {
+    private void setRight(BinarySearchTree<E> right) {
         if (isEmpty()) return;
         if (right != null && right.parent() == this) right.setParent(null);
 	this.right = right;
@@ -102,6 +102,28 @@ public class BinaryTree<E>
 
     private boolean isEmpty() {
         return (parent == null);
+    }
+    public void insert(String key) {
+       root = insertRec(root, key);
+    }
+     
+    /* A recursive function to insert a new key in BST */
+    public Association<String, String> insertRec(BinarySearchTree<E> root, Association<String, String> key) {
+ 
+        /* If the tree is empty, return a new node */
+        if (root == null) {
+            root = new BinarySearchTree<E>(key);
+            return root;
+        }
+ 
+        /* Otherwise, recur down the tree */
+        if (key < root.key)
+            root.left = insertRec(root.left, key);
+        else if (key > root.key)
+            root.right = insertRec(root.right, key);
+ 
+        /* return the (unchanged) node pointer */
+        return root;
     }
 	
 }

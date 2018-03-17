@@ -21,8 +21,8 @@ public class Association<K,V> implements Map.Entry<K,V>
     /**
      * Constructs a pair from a key and value.
      *
-     * @pre key is non-null
-     * @post constructs a key-value pair
+     * pre key is non-null
+     * post constructs a key-value pair
      * @param key A non-null object.
      * @param value A (possibly null) object.
      */
@@ -36,8 +36,8 @@ public class Association<K,V> implements Map.Entry<K,V>
     /**
      * Constructs a pair from a key; value is null.
      *
-     * @pre key is non-null
-     * @post constructs a key-value pair; value is null
+     * -pre key is non-null
+     * -post constructs a key-value pair; value is null
      * @param key A non-null key value.
      */
     public Association(K key)
@@ -48,8 +48,8 @@ public class Association<K,V> implements Map.Entry<K,V>
     /**
      * Standard comparison function.  Comparison based on keys only.
      *
-     * @pre other is non-null Association
-     * @post returns true if the keys are equal
+     * -pre other is non-null Association
+     * -post returns true if the keys are equal
      * @param other Another association.
      * @return true if the keys are equal.
      */
@@ -63,9 +63,9 @@ public class Association<K,V> implements Map.Entry<K,V>
     /**
      * Standard hashcode function.
      *
-     * @post return hash code association with this association
+     * -post return hash code association with this association
      * @return A hash code for association.
-     * @see Hashtable
+     * -see Hashtable
      */
     @Override
     public int hashCode()
@@ -76,7 +76,7 @@ public class Association<K,V> implements Map.Entry<K,V>
     /**
      * Fetch value from association.  May return null.
      *
-     * @post returns value from association
+     * -post returns value from association
      * @return The value field of the association.
      */
     @Override
@@ -88,7 +88,7 @@ public class Association<K,V> implements Map.Entry<K,V>
     /**
      * Fetch key from association.  Should not return null.
      *
-     * @post returns key from association
+     * -post returns key from association
      * @return Key of the key-value pair.
      */
     @Override
@@ -100,7 +100,7 @@ public class Association<K,V> implements Map.Entry<K,V>
     /**
      * Sets the value of the key-value pair.
      *
-     * @post sets association's value to value
+     * -post sets association's value to value
      * @param value The new value.
      */
     @Override
@@ -110,14 +110,4 @@ public class Association<K,V> implements Map.Entry<K,V>
         theValue = value;
         return oldValue;
     }
-
-    /**
-     * Standard string representation of an association.
-     *
-     * @post returns string representation
-     * @return String representing key-value pair.
-     */
-    /*
-...
-*/
 }

@@ -1,7 +1,7 @@
 house,casa
 dog,perro
 cat,gato
-maker,marcador
+marker,marcador
 place,lugar
 mountain,montaña
 homework,tarea

@@ -5,126 +5,73 @@
  */
 package Diccionario;
 
-import java.util.*;
-
 /**
  *
  * @author anahernandez
  */
-public class BinarySearchTree<E>
+public class BinarySearchTree<E> 
 {
 
-    protected Association<String, String> val; // value associated with node
-    protected BinarySearchTree<E> parent; // parent of node
-    protected BinarySearchTree<E> left, right; // children of node
+    private Node root;
 
     public BinarySearchTree()
     // post: constructor that generates an empty node
     {
-            val = null;
-            parent = null; left = right = this;
+        root = null;
     }
-
-    public BinarySearchTree(Association<String, String> value)
-    // post: returns a tree referencing value and two empty subtrees
+    void insert(Node newNode) 
     {
-            val = value;
-            right = left = new BinarySearchTree<E>();
-            setLeft(left);
-            setRight(right);
-    }
-
-    public BinarySearchTree(Association<String, String> value, BinarySearchTree<E> left, BinarySearchTree<E> right)
-    // post: returns a tree referencing value and two subtrees
-    {
-            val = value;
-            if (left == null) { left = new BinarySearchTree<E>(); }
-            setLeft(left);
-            if (right == null) { right = new BinarySearchTree<E>(); }
-            setRight(right);
-    }
-
-    public BinarySearchTree<E> left()
-    // post: returns reference to (possibly empty) left subtree
-    // post: returns reference to (possibly empty) left subtree
-    {
-            return left;
-    }
-
-    public BinarySearchTree<E> parent()
-    {
-        return parent;
-    }
-    // post: returns reference to parent node, or null
-
-    public void setLeft(BinarySearchTree<E> newLeft)
-    // post: sets left subtree to newLeft
-    // re-parents newLeft if not null
-    {
-            if (isEmpty()) return;
-            if (left != null && left.parent() == this) left.setParent(null);
-            left = newLeft;
-            left.setParent(this);
-    }
-
-    protected void setParent(BinarySearchTree<E> newParent)
-    // post: re-parents this node to parent reference, or null
-    {
-            if (!isEmpty()) {
-            parent = newParent;
-            }
-    }
-
-    public boolean isLeftChild()
-    // post: returns true if this is a left child of parent
-    {
-        return (parent.left().equals(this)); //si este objeto es igual al objeto guardado en el hijo izquierdo de su padre
-    }
-
-    public Association<String, String> value()
-    // post: returns value associated with this node
-    {
-            return val;
-    }
-
-    public void setValue(Association<String, String> value)
-    // post: sets the value associated with this node
-    {
-            val = value;
-    }
-
-    private void setRight(BinarySearchTree<E> right) {
-        if (isEmpty()) return;
-        if (right != null && right.parent() == this) right.setParent(null);
-	this.right = right;
-	right.setParent(this);
-    }
-
-    private boolean isEmpty() {
-        return (parent == null);
-    }
-    public void insert(String key) {
-       root = insertRec(root, key);
+        root = insertRec(root, newNode);
     }
      
     /* A recursive function to insert a new key in BST */
-    public Association<String, String> insertRec(BinarySearchTree<E> root, Association<String, String> key) {
+    public Node insertRec(Node root, Node newNode) {
  
         /* If the tree is empty, return a new node */
-        if (root == null) {
-            root = new BinarySearchTree<E>(key);
-            return root;
+        if (this.root == null) {
+            this.root = newNode;
+            return this.root;
         }
  
         /* Otherwise, recur down the tree */
-        if (key < root.key)
-            root.left = insertRec(root.left, key);
-        else if (key > root.key)
-            root.right = insertRec(root.right, key);
+        else if (root.getKey().compareTo(newNode.getKey()) < 0) //devuelve positivo si el primer string es menor que el segundo
+        {
+            root.setLeft(insertRec(root.getLeft(), newNode));
+            root.getLeft().setParent(root);
+        }
+        else if ((root.getKey().compareTo(newNode.getKey()) > 0) || (root.getKey().compareTo(newNode.getKey()) ==0))
+        {
+            root.setRight(insertRec(root.getRight(), newNode));
+            root.getRight().setParent(root);
+        }
  
         /* return the (unchanged) node pointer */
-        return root;
+      return root;
     }
-	
+    public Node search(Node root, String key)
+    {
+        // Base Cases: root is null or key is present at root
+        if (root==null || root.getKey().equals(key))
+            return root;
+
+        // val is greater than root's key
+        if (root.getKey().compareTo(key) < 0)
+            return search(root.getLeft(), key);
+
+        // val is less than root's key
+        return search(root.getRight(), key);
+    }
+    void inorder()  {
+       inorderRec(root);
+    }
+ 
+    // A utility function to do inorder traversal of BST
+    void inorderRec(Node root) {
+        if (root != null) {
+            inorderRec(root.getLeft());
+            System.out.println("("+ root.getKey()+ ", " + root.getEspanol()+ ")");
+            inorderRec(root.getRight());
+        }
+    }
 }
 

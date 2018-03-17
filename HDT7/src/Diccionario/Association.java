@@ -2,36 +2,8 @@
 // (c) 1998,2001 duane a. bailey
 package Diccionario;
 import java.util.Map;
-
-/*
-public class Association<K,V>
-*/
 /**
- * A class implementing a key-value pair.  This class associates an 
- * immutable key with a mutable value.  Used in many other structures.
- * <P>
- * Example Usage:
- * <P>
- * To store the number of classes a student has taken from five different
- * professors and to output this information, we could use the following.
- * <P>
- * <pre>
- * public static void main(String[] argv){
- *      //store the number of classes taken by the student in an array of associations
- *      {@link Association} [] classesTaken = new Association[5];
- *      classesTaken[0] = new {@link #Association(Object,Object) Association("Andrea", new Integer(5))};
- *      classesTaken[1] = new Association("Barbara", new Integer(1));
- *      classesTaken[2] = new Association("Bill", new Integer(3));
- *      classesTaken[3] = new Association("Duane", new Integer(2));
- *      classesTaken[4] = new Association("Tom", new Integer(1));
- *
- *      //print out each item in the array
- *      for (int i = 0; i< classesTaken.length; i++){
- *          System.out.println("This Student has taken " + classesTaken[i].{@link #getValue()} +
- *                             " classes from " + classesTaken[i].{@link #getKey()}+ ".");
- *      }
- * }
- * </pre>
+ * 
  * @version $Id: Association.java 34 2007-08-09 14:43:44Z bailey $
  * @author, 2001 duane a. bailey
  */
@@ -46,12 +18,6 @@ public class Association<K,V> implements Map.Entry<K,V>
      * The mutable value.  An arbitrary object.
      */
     protected V theValue; // the value of the key-value pair
-
-    /*
-      for example:
-      Association<String,Integer> personAttribute =
-         new Assocation<String,Integer>("Age",34);
-     */
     /**
      * Constructs a pair from a key and value.
      *
@@ -83,10 +49,11 @@ public class Association<K,V> implements Map.Entry<K,V>
      * Standard comparison function.  Comparison based on keys only.
      *
      * @pre other is non-null Association
-     * @post returns true iff the keys are equal
+     * @post returns true if the keys are equal
      * @param other Another association.
-     * @return true iff the keys are equal.
+     * @return true if the keys are equal.
      */
+    @Override
     public boolean equals(Object other)
     {
         Association otherAssoc = (Association)other;
@@ -100,6 +67,7 @@ public class Association<K,V> implements Map.Entry<K,V>
      * @return A hash code for association.
      * @see Hashtable
      */
+    @Override
     public int hashCode()
     {
         return getKey().hashCode();
@@ -111,6 +79,7 @@ public class Association<K,V> implements Map.Entry<K,V>
      * @post returns value from association
      * @return The value field of the association.
      */
+    @Override
     public V getValue()
     {
         return theValue;
@@ -122,6 +91,7 @@ public class Association<K,V> implements Map.Entry<K,V>
      * @post returns key from association
      * @return Key of the key-value pair.
      */
+    @Override
     public K getKey()
     {
         return theKey;
@@ -133,6 +103,7 @@ public class Association<K,V> implements Map.Entry<K,V>
      * @post sets association's value to value
      * @param value The new value.
      */
+    @Override
     public V setValue(V value)
     {
         V oldValue = theValue;
@@ -146,12 +117,6 @@ public class Association<K,V> implements Map.Entry<K,V>
      * @post returns string representation
      * @return String representing key-value pair.
      */
-    public String toString()
-    {
-        StringBuffer s = new StringBuffer();
-        s.append("<Association: "+getKey()+"="+getValue()+">");
-        return s.toString();
-    }
     /*
 ...
 */

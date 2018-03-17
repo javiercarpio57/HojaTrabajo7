@@ -21,16 +21,15 @@ public class Principal {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        Association<String, String> valor;
-        
-        System.out.println("Ingrese la direccion o el nombre del documento .txt (en el caso está en la misma carpeta que el programa): ");
-        Scanner teclado = new Scanner(System.in);
-        String file = teclado.nextLine();
-        BufferedReader br = new BufferedReader(new FileReader(file));     
+        BufferedReader br = new BufferedReader(new FileReader("diccionario.txt"));    
+        StringBuilder sb = new StringBuilder();
+        String line;
+        Node<Association<String,String>> nuevoNodo = null;
+        BinarySearchTree<Node<Association<String, String>>> bst = new BinarySearchTree<>(); //se crea nuevo arbol null
 
-        try {                
-            StringBuilder sb = new StringBuilder();
-            String line = br.readLine();
+        Scanner teclado = new Scanner(System.in);
+
+        try {
             while ((line=br.readLine())!=null) {
                 String palabraIngles = "";
                 String palabraEspanol = "";
@@ -39,14 +38,20 @@ public class Principal {
                 line = line + " "; //Concatenado para que el ultimo valor sea leido sin problemas
                                    //por substring
                 for(int i=1;i<line.length();i++){
+                    
                     String iter = line.substring((i-1), i); 
-                    if(iter.equals(",")){
-                        palabraIngles = line.substring(i, line.length()).toUpperCase(); //se obtiene la subcadena luego de ","
-                        palabraEspanol = line.substring(0, i-1).toUpperCase(); //se obtiene la subcadena antes de ","       
+                    if(iter.equals(","))
+                    {
+                        palabraEspanol = line.substring(i, line.length()).toUpperCase(); //se obtiene la subcadena luego de ","
+                        palabraIngles = line.substring(0, i-1).toUpperCase(); //se obtiene la subcadena antes de "," 
+                        //System.out.println(palabraIngles+ ","+palabraEspanol);
                     }
+                    nuevoNodo = new Node<>(palabraIngles, palabraEspanol); //se crea el "nodo" que se pondrá en el tree
+                    bst.insert(nuevoNodo); 
                 }
-                valor = new Association (palabraIngles, palabraEspanol); //se crea el "nodo" que se pondrá en el tree
             }
+            System.out.println("Imprimiendo diccionario - InOrder: ");
+            bst.inorder();
         }
         finally{
             br.close();

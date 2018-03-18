@@ -4,6 +4,7 @@ package Diccionario;
 /**
  *
  * @author anahernandez
+ * @param <E>
  */
 public class Node<E> {
     private Association<String, String> value; // valor del nodo

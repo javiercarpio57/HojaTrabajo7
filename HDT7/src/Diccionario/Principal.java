@@ -50,8 +50,8 @@ public class Principal {
                     }
                 }
             }
-//            System.out.println("Imprimiendo diccionario - InOrder: ");
-//            bst.inorder();
+            System.out.println("Imprimiendo diccionario - InOrder: ");
+            bst.inorder();
         }
         finally{
             br.close();
@@ -76,16 +76,10 @@ public class Principal {
         
         String palabras[] = palabra.split(" ");
         
-//        for(String p : palabras){
-//            System.out.println(p);
-//        }
-        
         BinarySearchTree<Node<Association<String, String>>> bt = new BinarySearchTree<>();
-        Node nodo = new Node();
         
         String resultado = "";
-        System.out.println("Imprimiendo:");
-        bst.inorder();
+
         String word;
         for(String p: palabras){
             word = p.toUpperCase();
@@ -93,10 +87,11 @@ public class Principal {
             
             
         }
-        System.out.println("\n\n\n\n");
-        System.out.println("-----------------------------");
-        
+        //System.out.println("\n\n\n\n");
+        System.out.println("----------------------------------");
+        System.out.println("Traduccion del documento.");
         System.out.println(resultado);
+        System.out.println("----------------------------------");
         
     }
     

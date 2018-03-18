@@ -68,26 +68,6 @@ public class BinarySearchTree<E>
      * 
      * Obtenido de: https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
      */
-//    private Node search(Node root, String key)
-//    {
-//        boolean found = false;
-//        while ((root != null) && !found){
-//            String rval = root.getKey();
-//            
-//            if(rval.equals(key)){
-//                found = true;
-//                break;
-//            }else if (rval.compareTo(key) < 0){
-//                root = root.getLeft();
-//            }else{
-//                root = root.getRight();
-//            }
-//            
-//        }
-//        
-//        
-//        return search(root, key);
-//    }
     
     public String search(String dato){
         
@@ -119,6 +99,10 @@ public class BinarySearchTree<E>
             System.out.println(root.toString());
             inorderRec(root.getRight());
         }
+    }
+
+    public Node getRoot() {
+        return root;
     }
     
     

@@ -2,6 +2,7 @@
 package Diccionario;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -49,12 +50,54 @@ public class Principal {
                     }
                 }
             }
-            System.out.println("Imprimiendo diccionario - InOrder: ");
-            bst.inorder();
+//            System.out.println("Imprimiendo diccionario - InOrder: ");
+//            bst.inorder();
         }
         finally{
             br.close();
         }
+        
+        //Traduccion del documento.
+        
+        File archivo = new File ("texto.txt");
+
+        FileReader fr = new FileReader (archivo);
+        BufferedReader br1 = new BufferedReader(fr);
+        String linea = "";
+        Scanner scanner = new Scanner(fr);
+        String palabra = "";
+        
+        while (scanner.hasNextLine()) {
+            linea += scanner.nextLine();
+            palabra = linea.replaceAll("\n", " ");
+        }
+        fr.close();
+        br1.close();
+        
+        String palabras[] = palabra.split(" ");
+        
+//        for(String p : palabras){
+//            System.out.println(p);
+//        }
+        
+        BinarySearchTree<Node<Association<String, String>>> bt = new BinarySearchTree<>();
+        Node nodo = new Node();
+        
+        String resultado = "";
+        System.out.println("Imprimiendo:");
+        bst.inorder();
+        String word;
+        for(String p: palabras){
+            word = p.toUpperCase();
+            resultado += bst.search(word) + " ";
+            
+            
+        }
+        System.out.println("\n\n\n\n");
+        System.out.println("-----------------------------");
+        
+        System.out.println(resultado);
+        
     }
     
 }

@@ -1,4 +1,4 @@
-house,casa
+﻿house,casa
 dog,perro
 cat,gato
 marker,marcador
@@ -86,3 +86,6 @@ thin,delgado
 therapy,terapia
 sob,llanto
 work,trabajo
+hello,hola
+have,tengo
+a,un

@@ -1,6 +1,4 @@
 
-
-
 /**
  *
  * @author anahernandez
@@ -70,19 +68,37 @@ public class BinarySearchTree<E>
      * 
      * Obtenido de: https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
      */
-    public Node search(Node root, String key)
-    {
-        // Base Cases: root is null or key is present at root
-        if (root==null || root.getKey().equals(key))
-            return root;
-
-        // val is greater than root's key
-        if (root.getKey().compareTo(key) < 0)
-            return search(root.getLeft(), key);
-
-        // val is less than root's key
-        return search(root.getRight(), key);
+//    private Node search(Node root, String key)
+//    {
+//        boolean found = false;
+//        while ((root != null) && !found){
+//            String rval = root.getKey();
+//            
+//            if(rval.equals(key)){
+//                found = true;
+//                break;
+//            }else if (rval.compareTo(key) < 0){
+//                root = root.getLeft();
+//            }else{
+//                root = root.getRight();
+//            }
+//            
+//        }
+//        
+//        
+//        return search(root, key);
+//    }
+    
+    public String search(String dato){
+        
+        if (root == null){
+            
+            return "*" + dato + "*";
+        }else{
+            return root.search(dato);
+        }
     }
+    
     /**
      * Funcion que llama a la función recursiva (establece el punto de comienzo - raíz del árbol - para empezar a revisar y 
      * comparar nodos).
@@ -104,5 +120,7 @@ public class BinarySearchTree<E>
             inorderRec(root.getRight());
         }
     }
+    
+    
 }
 

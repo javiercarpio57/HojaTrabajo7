@@ -16,6 +16,10 @@ public class Node<E> {
         parent = null; 
         left = right = null;
     }
+
+    public Node() {
+        
+    }
     /**
      * Obtiene el valor contenido en el nodo.
      * @return Association : valor que contiene el nodo (un association con la palabra en inglés como key y la de español como value)
@@ -38,7 +42,7 @@ public class Node<E> {
      */
     public String getKey()
     {
-        return value.theKey; //devuelve la palabra en ingles
+        return value.getKey(); //devuelve la palabra en ingles
     }
     /**
      * Obtiene referencia a hijo izquierdo.
@@ -98,6 +102,30 @@ public class Node<E> {
     {
        String hilo = "\t("+ value.theKey + ", " + value.theValue + ")";
        return hilo;
+    }
+    
+    public String search(String value){
+        if (value.equals(this.value.getKey())){
+            
+            return this.value.theValue;
+        }else if (value.compareTo(this.value.getKey()) < 0) {
+            
+            if (left == null){
+                return "*" + value + "*";
+            }else{
+                return left.search(value);
+            }
+        }else if(value.compareTo(this.value.getKey()) > 0) {
+            
+            if (right == null){
+                return "*" + value + "*";
+            }else{
+                return right.search(value);
+
+            }
+        }
+        
+        return "*" + value + "*";
     }
     
     

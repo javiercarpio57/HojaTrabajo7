@@ -1,15 +1,15 @@
 
-package Diccionario;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author javie
+ * @author Ana Lucia Hernandez
+ * @author Javier Carpio
+ * @version 15.03.2018
  */
+
 public class BinarySearchTreeTest {
     
     public BinarySearchTreeTest() {
@@ -44,9 +44,6 @@ public class BinarySearchTreeTest {
         }else{
             assertEquals(expected1, actual1);
         }
-        
-        
-        
     }
 
     /**

@@ -1,16 +1,20 @@
 
-package Diccionario;
-
 /**
- *
- * @author anahernandez
- * @param <E>
+ * @author Ana Lucia Hernandez
+ * @author Javier Carpio
+ * @version 15.03.2018
+ * @param <E> Generico
  */
 public class Node<E> {
     private Association<String, String> value; // valor del nodo
     private Node<E> parent; // padre de nodo
     private Node<E> left, right; // hijos laterales de nodo
     
+    /**
+     * Constructor que crea la raiz
+     * @param ingles Palabra en ingles
+     * @param espanol Palabra en espanol
+     */
     public Node(String ingles, String espanol)
     {
         value = new Association<>(ingles, espanol);
@@ -18,6 +22,9 @@ public class Node<E> {
         left = right = null;
     }
 
+    /**
+     * Constructor que llama el nodo
+     */
     public Node() {
         
     }
@@ -105,6 +112,11 @@ public class Node<E> {
        return hilo;
     }
     
+    /**
+     * Metodo que busca la palabra en ingles en el arbol creado.
+     * @param value Palabra en ingles a buscar
+     * @return Palabra traducida.
+     */
     public String search(String value){
         if (value.equals(this.value.getKey())){
             

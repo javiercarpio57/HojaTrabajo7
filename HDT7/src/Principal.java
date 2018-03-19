@@ -1,6 +1,3 @@
-
-package Diccionario;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,8 +6,9 @@ import java.io.IOException;
 import java.util.Scanner;
 
 /**
- *
- * @author javie
+ * @author Ana Lucia Hernandez
+ * @author Javier Carpio
+ * @version 15.03.2018
  */
 public class Principal {
 

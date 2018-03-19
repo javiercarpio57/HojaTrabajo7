@@ -1,14 +1,18 @@
 
 /**
- *
- * @author anahernandez
+ * @author Ana Lucia Hernandez
+ * @author Javier Carpio
+ * @version 15.03.2018
+ * @param <E> Generico
  */
-package Diccionario;
 
 public class BinarySearchTree<E> 
 {
     private Node root;
     
+    /**
+     * Metodo que llama al BinarySearchTree.
+     */
     public BinarySearchTree()
     // post: constructor that generates an empty node
     {
@@ -62,12 +66,11 @@ public class BinarySearchTree<E>
     }
     /**
      * Método que busca si una palabra en inglés existe en el árbol y su traducción.
-     * @param root: nodo actual
+     * @param dato Palabra a buscar en el nodo.
      * @return Node: nodo que contiene la referencia buscada.
      * 
      * Obtenido de: https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
      */
-    
     public String search(String dato){
         
         if (root == null){
@@ -100,6 +103,10 @@ public class BinarySearchTree<E>
         }
     }
 
+    /**
+     * Metodo que brinda el valor de la raiz.
+     * @return Informacion de la raiz
+     */
     public Node getRoot() {
         return root;
     }

@@ -63,7 +63,6 @@ public class BinarySearchTree<E>
     /**
      * Método que busca si una palabra en inglés existe en el árbol y su traducción.
      * @param root: nodo actual
-     * @param key: valor que se está buscando en el árbol
      * @return Node: nodo que contiene la referencia buscada.
      * 
      * Obtenido de: https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/

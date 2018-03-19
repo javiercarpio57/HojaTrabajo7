@@ -89,3 +89,4 @@ work,trabajo
 hello,hola
 have,tengo
 a,un
+my,mi
